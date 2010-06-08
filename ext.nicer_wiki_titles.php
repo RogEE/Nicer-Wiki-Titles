@@ -6,13 +6,14 @@
 RogEE "Nicer Wiki Titles"
 an extension for ExpressionEngine 2
 by Michael Rog
-v0.1
+v1.0
 
 email Michael with questions, feedback, suggestions, bugs, etc.
 >> michael@michaelrog.com
 
 Changelog:
 0.1 - dev
+1.0 - public release
 
 =====================================================
 
@@ -31,7 +32,7 @@ class Nicer_wiki_titles_ext
 		var $nwt_tags		= array('title' => "{title}", 'nicer_title' => "{nicer_title}", 'rogee_nwt_title' => "{rogee_nwt_title}") ;
     	
 		var $name			= "RogEE Nicer Wiki Titles" ;
-		var $version		= "0.1.0" ;
+		var $version		= "1.0.0" ;
 		var $description	= "Allows wiki articles to have nicer 'display titles' with specific capitalization and punctuation." ;
 		var $settings_exist	= "y" ;
 		var $docs_url		= "http//michaelrog.com/go/ee" ;
@@ -77,9 +78,6 @@ class Nicer_wiki_titles_ext
 			$this->name = $this->EE->lang->line('nicer_wiki_titles_module_name') ;
 			$this->description = $this->EE->lang->line('nicer_wiki_titles_module_description') ;
 			
-			// debug			
-			$this->debug("constructor");
-			
 		} // END Constuctor
 
 
@@ -123,11 +121,8 @@ class Nicer_wiki_titles_ext
 	
 			if ($this->EE->db->query('SHOW COLUMNS FROM exp_wiki_revisions LIKE "rogee_nwt_title"')->num_rows() == 0)
 			{
-				$this->debug("column not found; adding rogee_nwt_title in exp_wiki_revisions") ;
 				$this->EE->db->query('ALTER TABLE exp_wiki_revisions ADD COLUMN rogee_nwt_title TEXT DEFAULT NULL');
 			}
-			
-			$this->debug("extension activated.");
 			
 		} // END activate_extension()
 
@@ -224,14 +219,10 @@ class Nicer_wiki_titles_ext
 			if ($revision_query->row('rogee_nwt_title') != NULL)
 
 			{
-
-				$this->debug("Nicer Title found!") ;
 				
 				return str_replace($tag, $revision_query->row('rogee_nwt_title'), $w_object->return_data) ;
 
 			} else {
-			
-				$this->debug("Dang, no Nice Title found.") ;
 				
 				switch (true) {
 				
@@ -282,14 +273,12 @@ class Nicer_wiki_titles_ext
 
 			if ($current == '' OR $current == $this->version)
 			{
-				$this->debug("update_extension()");
 				return FALSE;		
 			}
 			
 			if (version_compare($current, "1.0.0", "<"))
 			{
 				// Update to 1.0.0
-				$this->debug("updating to 1.0.0");	
 			}
 
 			$this->EE->db->query("UPDATE exp_extensions SET version = '".$DB->escape_str($this->version)."' WHERE class = '".get_class($this)."'");
@@ -307,8 +296,6 @@ class Nicer_wiki_titles_ext
 		
 			$this->EE->db->delete('exp_extensions', array('class' => get_class($this)));
 			
-			$this->debug("disable_extension()");
-			
 		} // END disable_extension()
 
 
@@ -319,14 +306,14 @@ class Nicer_wiki_titles_ext
 
 		function debug($debug_statement = "")
 		{
-			if ($this->dev_on === TRUE)
+			if ($this->dev_on)
 			{
 				$this->EE->db->query('INSERT INTO rogee_debug_log (class, event, timestamp) VALUES ("'.get_class($this).'", "'.$debug_statement.'", CURRENT_TIMESTAMP)');
 			}
 			
 			return $debug_statement ;
 			
-		} // END rogee_debug()
+		} // END debug()
 		
 		
 		
