@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:ee_addon="http://expressionengine-addons.com/nsm_addon_updater/#rss-xml">
+    <channel>
+        <title>RogEE Nicer Wiki Titles extension changelog</title>
+        <link>http://michaelrog.com/go/ee/</link>
+        <description>Most recent changes to RogEE Nicer Wiki Titles, with links to updates.</description>
+        <item>
+            <title>Version 0.1</title>
+            <!-- Additional tag required for NSM Addon Updater -->
+            <ee_addon:version>0.1</ee_addon:version>
+            <link>http://michaelrog.com/go/ee/</link>
+            <pubDate>Sun, 6 Jun 2010 11:11:11 +0000</pubDate>
+            <description><![CDATA[
+                <ul>
+                    <li>Initial dev version</li>
+                </ul>
+            ]]>
+            </description>
+            <enclosure url="http://bitbucket.org/rogee/nicer_wiki_titles/get/tip.zip" type="application/zip" />
+         </item>
+    </channel>
+</rss>
