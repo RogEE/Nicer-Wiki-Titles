@@ -7,14 +7,14 @@ $lang = array(
 //----------------------------------------
 
 "nicer_wiki_titles_module_name" =>
-"(RogEE) Nicer Wiki Titles",
+"RogEE Nicer Wiki Titles",
 
 "nicer_wiki_titles_module_description" =>
 "Allows wiki articles to have nicer 'display titles' with specific capitalization and punctuation.",
 
 //----------------------------------------
 
-'nwt_language' => '(RogEE) Nicer Wiki Titles speaks English!',
+'nwt_language' => 'RogEE Nicer Wiki Titles speaks English!',
 
 'nwt_tag' => 'Tag to replace',
 'nwt_substitute_url_title' => 'Use basic page title if Nicer Title is not registered/available?',
