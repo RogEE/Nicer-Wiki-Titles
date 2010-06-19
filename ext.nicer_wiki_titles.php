@@ -32,7 +32,7 @@ class Nicer_wiki_titles_ext
 		var $nwt_tags		= array('title' => "{title}", 'nicer_title' => "{nicer_title}", 'rogee_nwt_title' => "{rogee_nwt_title}") ;
     	
 		var $name			= "RogEE Nicer Wiki Titles" ;
-		var $version		= "1.0.0" ;
+		var $version		= "1.0.1" ;
 		var $description	= "Allows wiki articles to have nicer 'display titles' with specific capitalization and punctuation." ;
 		var $settings_exist	= "y" ;
 		var $docs_url		= "http//michaelrog.com/go/ee" ;
